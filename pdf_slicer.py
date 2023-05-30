@@ -25,8 +25,8 @@ def get_modify_pages_slice_list(slice_list_to_change, pages):
     return slice_list_to_change
 
 
-def pdf_handler(page_sliced_list, metadata, save_pdf=False):
-    for index in range(len(page_slice_list) - 1):
+def pdf_handler(page_sliced_list, pdf_pages, metadata, save_pdf=False):
+    for index in range(len(page_sliced_list) - 1):
         pages = pdf_pages[page_sliced_list[index]:page_sliced_list[index + 1]]
         pages_range = f"{page_sliced_list[index]}-{page_sliced_list[index + 1]}"
 
@@ -40,13 +40,14 @@ def show_new_pdf():
     pass
 
 
-path_to_pdf_file = "../GIT+Key+Terminology.pdf"
-pages_slice_list = [2]
+def pdf_slicer_handler(path_to_pdf_file, pages_list, save=False):
+    metadata, pdf_pages = read_pdf(path_to_pdf_file)
 
-metadata, pdf_pages = read_pdf(path_to_pdf_file)
+    page_slice_list = get_modify_pages_slice_list(pages_list, pdf_pages)
 
-page_slice_list = get_modify_pages_slice_list(pages_slice_list, pdf_pages)
+    pdf_handler(page_slice_list, pdf_pages, metadata, save)
+#
+# path = "GIT+Key+Terminology.pdf"
+# pages_list = [2]
 
-pdf_handler(page_slice_list, metadata, True)
-
-
+# pdf_slicer_handler(path, pages_list, True)
