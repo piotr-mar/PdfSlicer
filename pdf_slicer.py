@@ -46,8 +46,3 @@ def pdf_slicer_handler(path_to_pdf_file, pages_list, save=False):
     page_slice_list = get_modify_pages_slice_list(pages_list, pdf_pages)
 
     pdf_handler(page_slice_list, pdf_pages, metadata, save)
-#
-# path = "GIT+Key+Terminology.pdf"
-# pages_list = [2]
-
-# pdf_slicer_handler(path, pages_list, True)
